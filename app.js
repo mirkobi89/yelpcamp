@@ -19,8 +19,11 @@ var express = require("express"),
 //seed the database
 //seedDB(); 
 
-mongoose.connect("mongodb://localhost/yelp_camp_4",
-                    { useNewUrlParser: true });
+
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp_4";
+//process.env.DATABASEURL is the env variabile set on heroku and the db atlas location, the other is localdb
+mongoose.connect(url,{ useNewUrlParser: true });
+
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");
 
