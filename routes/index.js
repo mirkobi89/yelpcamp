@@ -11,18 +11,23 @@ router.get("/", function(req,res){
 
 //auth routes
 
-//show register form
-router.get("/register",function(req,res){
-	res.render("register");
+
+// show register form
+router.get("/register", function(req, res){
+   res.render("register", {page: 'register'}); 
+});
+
+//show login form
+router.get("/login", function(req, res){
+   res.render("login", {page: 'login'}); 
 });
 
 router.post("/register",function(req,res){
 	var newUser = new User({username:req.body.username});
 	User.register(newUser,req.body.password, function(err,user){
 		if(err){
-			req.flash("error",err.message);
-			//print the message from the err obj (mongoose-passport package)
-			return res.redirect("/register");
+			console.log(err);
+			return res.render("/register", {error:err.message});
 		}
 		passport.authenticate("local")(req,res,function(){
 			req.flash("success",
@@ -31,18 +36,6 @@ router.post("/register",function(req,res){
 		});
 	});
 });
-
-//show login form
-
-router.get("/login",function(req,res){
-	//send to login.ejs message NOTE: see middleware
-	//res.render("login", {message: req.flash("error")});
-	res.render("login");
-});
-
-//login logic
-//app.post("/login",middleware,callback)
-
 
 router.post("/login", passport.authenticate("local",
 	{
@@ -54,7 +47,7 @@ router.post("/login", passport.authenticate("local",
 
 router.get("/logout",function(req,res){
 	req.logout();
-	req.flash("success", "logged you out");
+	req.flash("success", "Logged you out");
 	res.redirect("/campgrounds");
 });
 
