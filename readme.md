@@ -15,3 +15,6 @@
 
 #add moment js
 *time since... feature on campgrounds and comments
+
+#add admin role
+*can edit/delete all

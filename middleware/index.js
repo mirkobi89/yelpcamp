@@ -15,7 +15,7 @@ middlewareObj.checkCampgroundOwnership = function (req,res,next){
 			//NOTE: author is a mongoose object, loggedUser is a string so i 				must use .equals instead of ===
 			var author = foundCampground.author.id;
 			var loggedUser = req.user._id;
-			if(author.equals(loggedUser)){
+			if(author.equals(loggedUser)||req.user.isAdmin){
 				next();
 			}
 			else{
@@ -45,7 +45,7 @@ middlewareObj.checkCommentOwnership= function(req,res,next){
 			//NOTE: author is a mongoose object, loggedUser is a string so i 				must use .equals instead of ===
 			var author = foundComment.author.id;
 			var loggedUser = req.user._id;
-			if(author.equals(loggedUser)){
+			if(author.equals(loggedUser)||req.user.isAdmin){
 				next();
 			}
 			else{
