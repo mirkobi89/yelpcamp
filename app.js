@@ -47,6 +47,9 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+//moment js
+app.locals.moment = require('moment');
+
 //middleware called on every routes
 app.use(function(req,res,next){
 	//current user

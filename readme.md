@@ -1,4 +1,4 @@
-#adding in flash
+#adding in flash messages
 *install and configure connect-flash
 *add bootstrap alerts to header
 
@@ -12,3 +12,6 @@
 *google api key AIzaSyBQ-QeF8HJpOS9trwB4KPZLlU91AphJz_Y
 *add env variable: export GEOCODER_API_KEY=AIzaSyC96KIncphM4zzCW7zcrttwLGdgBDiNcds
 *instal node-geocoder
+
+#add moment js
+*time since... feature on campgrounds and comments
