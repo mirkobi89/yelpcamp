@@ -18,3 +18,11 @@
 
 #add admin role
 *can edit/delete all
+
+#add password recovery
+*async, nodemailer packages
+*add forgot get/post routes
+*add forgot/reset views
+*enable less secure app on google
+https://myaccount.google.com/lesssecureapps?pli=1
+*add env variable export GMAILPW=senton8920
